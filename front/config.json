@@ -1,0 +1,4 @@
+{
+  "filesWatch" :["src/components/app.js", "src/components/**/*.js", "src/build/app.js"],
+  "filesConcat":["src/components/app.js", "src/components/**/*.js"]
+}

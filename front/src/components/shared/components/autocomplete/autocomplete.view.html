@@ -1,0 +1,100 @@
+<div class="directiveCity" uib-dropdown dropdown-append-to-body="ctrl.appendBody">
+  <button uib-dropdown-toggle  ng-click="ctrl.getCityList()" ng-disabled="ctrl.isDis">
+    <span class="caret"></span>
+  </button>
+  <input
+    type="text"
+    id="{{ctrl.idCity}}"
+    name="{{ctrl.idCity}}"
+    class="form-control uib-typeahead-match"
+    ng-model="ctrl.myValue"
+    placeholder="{{ctrl.placeholder}}"
+    uib-typeahead="type as (type.name) for type in ctrl.getCitySearch($viewValue)"
+    typeahead-min-length="2"
+    ng-blur="ctrl.onBlurInput({item : $item})"
+    typeahead-editable="ctrl.editable"
+    typeahead-append-to-body="ctrl.appendBody"
+    typeahead-on-select="ctrl.typeaheadSelect({item : $item})"
+    ng-required="ctrl.isReq"
+    ng-disabled="ctrl.isDis"/>
+  <ul class="dropdown-menu dropdownDirectivs" uib-dropdown-menu role='menu' when-scrolled="ctrl.getCityList()">
+    <li ng-repeat='type in ctrl.listCity2 track by type.id'>
+      <a href="" id="listPuc" ng-click='ctrl.onSelect(type)'>{{type.name}}</a>
+    </li>
+  </ul>
+</div>
+<style>
+  .dropdown-menu{
+    max-height: 20em;
+    overflow: auto;
+  }
+  .directiveCity{
+    position:relative;
+  }
+  .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 6px dashed;
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+    color: transparent;
+  }
+  .directivePuc input,
+  .directiveCity input,
+  .customersAutocomplete input,
+  .providersAutocomplete input,
+  .directiveThird input {
+    width: 100%;
+  }
+  .directivePuc button,
+  .directiveCity button,
+  .customersAutocomplete button,
+  .providersAutocomplete button,
+  .directiveThird button {
+    width: 20px;
+    height: 2.7em;
+    padding: 0.1em 0;
+    position: absolute;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    color: #000;
+  }
+  .directivePuc button:disabled,
+  .directiveCity button:disabled,
+  .customersAutocomplete button:disabled,
+  .providersAutocomplete button:disabled,
+  .directiveThird button:disabled {
+    background-color: transparent !important;
+  }
+  .directivePuc button span,
+  .directiveCity button span,
+  .customersAutocomplete button span,
+  .providersAutocomplete button span,
+  .directiveThird button span {
+    font-size: 0.5em;
+  }
+  .directivePuc:hover .caret,
+  .directiveCity:hover .caret,
+  .customersAutocomplete:hover .caret,
+  .providersAutocomplete:hover .caret,
+  .directiveThird:hover .caret {
+    color: #000;
+  }
+  .directivePuc > .dropdown-menu,
+  .directiveCity > .dropdown-menu,
+  .customersAutocomplete > .dropdown-menu,
+  .providersAutocomplete > .dropdown-menu,
+  .directiveThird > .dropdown-menu {
+    padding-right: 0.5em;
+  }
+  .dropdownDirectivs {
+    max-height: 200px;
+    font-size: 1.2em;
+    overflow: auto;
+    z-index: 200;
+  }
+</style>

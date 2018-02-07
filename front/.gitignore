@@ -1,0 +1,21 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+
+node_modules/
+
+src/assets/js/app.bundle.js
+src/assets/js/app.bundle.js.map
+src/assets/js/vendors.js
+src/assets/js/vendors.js.map
+
+*.DS_Store
+*.log
+*.swp
+*.TMP
