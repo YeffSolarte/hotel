@@ -1,0 +1,95 @@
+<section class="row home_section">
+    <div class="col-xs-12 col-sm-3 ">
+        <div class="filters">
+            <uib-accordion>
+                <div uib-accordion-group class="panel-default panel-principal" is-open="$ctrl.filters.open">
+                    <uib-accordion-heading>
+                        <span class="title_filter">Filtros</span> <i class="pull-right glyphicon" ng-class="{'glyphicon-triangle-bottom': $ctrl.filters.open, 'glyphicon-triangle-right': !$ctrl.filters.open}"></i>
+                    </uib-accordion-heading>
+                    <uib-accordion class="child-filters">
+                        <div uib-accordion-group class="panel-default text_filter" is-open="$ctrl.filters.textSearch.open">
+                            <uib-accordion-heading>
+                                <span><i class="fa fa-search"></i>Nombre de hotel</span> <i class="pull-right glyphicon" ng-class="{'glyphicon-triangle-bottom': $ctrl.filters.textSearch.open, 'glyphicon-triangle-right': !$ctrl.filters.textSearch.open}"></i>
+                            </uib-accordion-heading>
+                            <input type="text" class="form-control" ng-model="$ctrl.filters.textSearch.text" placeholder="Ingrese el nombre del hotel">
+                        </div>
+                        <div uib-accordion-group class="panel-default" is-open="$ctrl.filters.stars.open">
+                            <uib-accordion-heading>
+                                <span><i class="fa fa-star"></i>Estrellas</span> <i class="pull-right glyphicon" ng-class="{'glyphicon-triangle-bottom': $ctrl.filters.stars.open, 'glyphicon-triangle-right': !$ctrl.filters.stars.open}"></i>
+                            </uib-accordion-heading>
+                            <div class="item_star"><input type="checkbox" ng-model="$ctrl.filters.stars.allStars"><strong>Todas las estrellas</strong></div>
+                            <div class="item_star">
+                                <input type="checkbox" ng-model="$ctrl.filters.stars.fiveStars">
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <div class="item_star">
+                                <input type="checkbox" ng-model="$ctrl.filters.stars.fourStars">
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <div class="item_star">
+                                <input type="checkbox" ng-model="$ctrl.filters.stars.treeStars">
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <div class="item_star">
+                                <input type="checkbox" ng-model="$ctrl.filters.stars.twoStars">
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <div class="item_star">
+                                <input type="checkbox" ng-model="$ctrl.filters.stars.oneStars">
+                                <span class="fa fa-star"></span>
+                            </div>
+                        </div>
+                    </uib-accordion>
+                </div>
+            </uib-accordion>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+        <div class="hotel_item row" ng-repeat="hotel in $ctrl.hotels | filter:$ctrl.filters.textSearch.text | starsFilter:$ctrl.filters.stars">
+            <div class="item_image col-xs-12  col-sm-4 col-md-3">
+                <figure>
+                    <img ng-src="{{$ctrl.ngAuthSettings.apiServiceBaseUri+ '/get-image-hotel/' + hotel.image}}" alt="image_hotel">
+                </figure>
+            </div>
+            <div class="item_description col-xs-12 col-sm-4 col-md-7">
+                <h4 ng-bind="hotel.name"></h4>
+                <div class="col-xs-12 without_padding item_star">
+                    <span ng-class="{'fa-star' : hotel.stars >= 1}" class="fa"></span>
+                    <span ng-class="{'fa-star' : hotel.stars > 1}" class="fa"></span>
+                    <span ng-class="{'fa-star' : hotel.stars > 2}" class="fa"></span>
+                    <span ng-class="{'fa-star' : hotel.stars > 3}" class="fa"></span>
+                    <span ng-class="{'fa-star' : hotel.stars > 4}" class="fa"></span>
+                </div>
+                <div class="item_amenity" ng-repeat="amenity in hotel.amenities">
+                    <figure>
+                        <img ng-src="{{'./assets/img/amenities/' + amenity + '.svg'}}" alt="amenity">
+                    </figure>
+                </div>
+            </div>
+            <div class="item_price col-xs-12 col-sm-4 col-md-2">
+                <div>
+                    <div><span>Precio por noche por habitación</span></div>
+                    <div><span class="item_price_text">${{::hotel.price | currency:'':0}}</span></div>
+                    <div>
+                        <button
+                                type="button"
+                                class="btn btn-default">
+                            Ver hotel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

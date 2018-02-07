@@ -1,0 +1,154 @@
+@import "font-awesome.styl"
+body
+  background #f4f5f4
+  font-size 14px
+  font-family: 'Open Sans', sans-serif
+  a
+  &:hover
+    text-decoration none
+
+header
+  width 100%
+  background #e8e8e3
+  border-bottom 5px solid #243d78
+  figure
+    margin-left 2em
+    img
+      height 5em
+      width auto
+
+main
+  width 100%
+  margin 0 !important
+  section
+    max-width 1368px
+    display block
+
+
+.without_padding
+  padding 0 !important
+
+.without_right-padding
+  padding 0 !important
+
+.item_star
+  margin-bottom 10px
+  span
+    font-size 1.7em
+    color #febb03
+
+//  home styles
+.home_section
+  padding 0 1em
+  margin 0 auto
+.hotel_item
+  background white
+  margin 2em 1em
+  -webkit-box-shadow: 0px 2px 11px 3px rgba(209,209,209,1);
+  -moz-box-shadow: 0px 2px 11px 3px rgba(209,209,209,1);
+  box-shadow: 0px 2px 11px 3px rgba(209,209,209,1);
+  & > div
+    height 15em
+    max-height 15em
+  .item_description
+    h4
+      font-weight bold
+      color #1179b3
+    .item_amenity
+      float left
+      margin 0 5px 10px 5px
+      figure
+        img
+          width 1.7em
+          height auto
+
+  .item_image
+    margin-top 15px
+    text-align center
+    figure
+      max-width 17em
+      height 95%
+      margin 0 auto
+      img
+        width 100%
+        height 100%
+
+  .item_price
+    & > div
+      padding 0 0 0 5px
+      border-left 1px dashed grey
+      height 100%
+      div
+        text-align center
+        margin 10px 0
+        .item_price_text
+          color #e16800
+          font-size 2em
+          font-weight bold
+
+        button
+          width 100%
+          color white
+          background #002979
+
+.filters
+  margin 2em 0
+  .child-filters
+    .panel-group
+      margin-top 1em
+    .item_star
+      input
+        margin-right 1em
+      span
+        font-size 1.2em
+  .panel-group
+    margin-bottom 0
+  .panel-principal
+    & > .panel-collapse
+      & > .panel-body
+        padding 0
+  & > div, .panel-heading
+    -webkit-box-shadow: 0px 2px 11px 3px rgba(209,209,209,1);
+    -moz-box-shadow: 0px 2px 11px 3px rgba(209,209,209,1);
+    box-shadow: 0px 2px 11px 3px rgba(209,209,209,1);
+    width 100%
+    background white
+    padding 1.2em 1.2em
+    border-radius 0
+    border-color initial
+    .title_filter_type, .accordion-toggle
+      color #1a7eb6
+      font-size .9em
+      font-weight bold
+      span
+        i
+          margin-right .5em
+
+  .title_filter
+    margin-bottom 5px
+    h4
+      margin 0
+      font-weight bold
+      color #444444
+
+@media screen and (max-width: 800px)
+  body
+    font-size 12px
+  //  home styles
+  .hotel_item
+    max-height 45em
+    & > div
+      height initial !important
+      max-height initial !important
+    .item_price
+      & > div
+        border-top 1px dashed grey
+        border-left none
+  .item_image
+    margin-top 15px
+    figure
+      max-width 27em !important
+      height 100% !important
+      img
+        height auto !important
+

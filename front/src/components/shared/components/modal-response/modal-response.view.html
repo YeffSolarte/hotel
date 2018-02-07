@@ -1,0 +1,47 @@
+<div class="modal-content salir-aplication">
+  <div class="modal-header" ng-if="mdCtrl.modalOptions.title">
+    <h5 class="modal-title" ng-if="!mdCtrl.modalOptions.titleIsHtml">
+      <span>{{mdCtrl.modalOptions.title}}</span>
+    </h5>
+    <h5 class="modal-title" ng-if="mdCtrl.modalOptions.titleIsHtml" ng-bind-html="mdCtrl.modalOptions.title | toTrusted">
+    </h5>
+  </div>
+
+  <div class="modal-body">
+    <div class="product-add clearfix">
+
+      <div class="row">
+        <div class="col-xs-12" ng-if="mdCtrl.modalOptions.isHtml">
+          <p ng-bind-html="mdCtrl.modalOptions.content | toTrusted">
+          </p>
+        </div>
+        <div class="col-xs-12" ng-if="!mdCtrl.modalOptions.isHtml">
+          <p>{{mdCtrl.modalOptions.content}}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 ">
+          <div class="btn-actions" style="text-align: right;">
+            <button
+              class="btn btn-danger squeare-button"
+              type="button"
+              ng-if="mdCtrl.modalOptions.showBottonCancel"
+              ng-click="mdCtrl.cancel()"
+              style="margin-right: 5px;">
+              <strong> {{mdCtrl.modalOptions.textActionCancel}}</strong>
+            </button>
+
+            <button
+              type="button"
+              ng-click="mdCtrl.ok()"
+              class="btn btn-warning squeare-button">
+              <strong> {{mdCtrl.modalOptions.textAction}} </strong>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
